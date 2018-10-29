@@ -1,0 +1,8 @@
+<% @courses.each do |c| %>
+  <tr>
+    <td><%= c.name %></td>
+    <td><%= c.code %></td>
+    <td><%= c.description %></td>
+    <td><%= link_to "enroll", "/enroll/#{c.code}", method: :post %></td>
+  </tr>
+<% end %>

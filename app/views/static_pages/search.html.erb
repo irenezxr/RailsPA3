@@ -1,0 +1,45 @@
+<% provide(:title, "Search") %>
+
+<div class="container">
+    <nav>
+      <ul class="nav navbar-nav navbar-right">
+        <li><%= link_to "Log out", logout_path, method: :delete %></li>
+        <li><%= link_to 'Search', search_path %></li>
+        <li><%= link_to 'Home', user_courses_path %></li>
+      </ul>
+    </nav>
+</div>
+
+<h1>Searching results</h1>
+
+<div>
+<%= form_tag("/search", method: "get", remote: true) do %>
+  <%= label_tag("Search for:") %>
+  <%= "Course name:" %>
+  <%= text_field_tag(:q, "", onchange: "Rails.fire(this.form, 'submit')") %>
+  <%= "Subject:" %>
+  <%= collection_select(:subject, :id, Subject.all, :id, :name, {prompt: true}, onchange: "Rails.fire(this.form, 'submit')") %>
+<% end %>
+</div>
+
+<div>
+<h1>Courses</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Code</th>
+      <th>Description</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody id="tableresults">
+    <%= render 'courses' %>
+  </tbody>
+</table>
+</div>
+
+<script>
+</script>

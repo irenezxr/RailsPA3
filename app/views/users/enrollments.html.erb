@@ -1,0 +1,38 @@
+<p id="notice"><%= notice %></p>
+
+<div class="container">
+    <nav>
+      <ul class="nav navbar-nav navbar-right">
+        <li><%= link_to "Log out", logout_path, method: :delete %></li>
+        <li><%= link_to 'Search', search_path %></li>
+        <li><%= link_to 'Home', user_courses_path %></li>
+      </ul>
+    </nav>
+</div>
+  
+<h1>Courses</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th>Code</th>
+      <th>Description</th>
+      <th colspan="3"></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @course.each do |c| %>
+      <tr>
+        <td><%= c.name %></td>
+        <td><%= c.code %></td>
+        <td><%= c.description %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+
